@@ -31,6 +31,12 @@ if !exists("*Autopep8(...)")
             return
         endif
 
+        if exists("g:autopep8_global_config")
+            let autopep8_global_config=" --global-config=".g:autopep8_global_config
+        else
+            let autopep8_global_config=""
+        endif
+
         if exists("g:autopep8_ignore")
             let autopep8_ignores=" --ignore=".g:autopep8_ignore
         else
@@ -90,7 +96,7 @@ if !exists("*Autopep8(...)")
             let autopep8_diff_type="horizontal"
         endif
 
-        let execmdline=autopep8_cmd.autopep8_pep8_passes.autopep8_selects.autopep8_ignores.autopep8_max_line_length.autopep8_aggressive.autopep8_indent_size.autopep8_range
+        let execmdline=autopep8_cmd.autopep8_global_config.autopep8_pep8_passes.autopep8_selects.autopep8_ignores.autopep8_max_line_length.autopep8_aggressive.autopep8_indent_size.autopep8_range
 
         " current cursor
         " show diff if not explicitly disabled
